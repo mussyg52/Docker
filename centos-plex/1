@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#Vars
+
+PVTIP=52.52.53.2
+
+docker build ../centos-plex/
+
+docker tag $(docker images | awk NR==2{'print $3'}) centos-plex
+
+while true; do
+	read -p "Would you like to run the container now? Yes or No $(echo $'\n>')"; 
+	case $yn in
+		[Yy]* ) docker run --privileged --net newnet --ip $PVTIP -it $(docker images | awk NR==2{'print $3'}); break;;
+		[Nn]* ) exit;;
+		* ) echo "Please answer yes or no.";;
+	esac
+done	
