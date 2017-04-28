@@ -14,7 +14,7 @@ docker tag $(docker images | awk NR==2{'print $3'}) centos-plex
 while true; do
 	read -p "Would you like to run the container now? $(echo $'\n> ')" yn; 
 	case $yn in
-		[Yy]* ) docker run --privileged --net newnet --ip $PVTIP -it $(docker images | awk NR==2{'print $3'}); break;;
+		[Yy]* ) docker run -d --privileged --net newnet --ip $PVTIP -it $(docker images | awk NR==2{'print $3'}); break;;
 		[Nn]* ) exit;;
 		* ) echo "Please answer yes or no.";;
 	esac
