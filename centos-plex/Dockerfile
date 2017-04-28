@@ -1,5 +1,5 @@
 FROM       centos:centos7
-MAINTAINER Wolfram Webers <wolfram.webers@gmail.com> v-0.9.12.18.1520
+MAINTAINER mussyg52
 
 # Fix broken link for /var/lock
 RUN mkdir -p /run/lock/subsys
